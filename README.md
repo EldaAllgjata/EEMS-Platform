@@ -13,28 +13,6 @@ HTML, CSS, JavaScript (Frontend)
 XAMPP (Local Development Environment)
 Git & GitHub (Version Control)
 
-Project Structure
-eems/
-│
-├── admin/        # Admin panel
-├── teacher/      # Teacher panel
-├── parent/       # Parent panel
-│
-├── api/          # API endpoints (e.g. QR scan)
-├── config/       # Configuration files (db.php)
-├── database/     # SQL file (eemsdb.sql)
-│
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
-│
-├── resources/    # Additional resources
-├── tests/        # Testing files
-│
-├── index.php     # Main entry point
-└── README.md
-
 Installation & Setup
 Clone the repository:
 git clone https://github.com/EldaAllgjata/EEMS-Platform.git
