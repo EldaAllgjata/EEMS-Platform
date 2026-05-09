@@ -1,7 +1,7 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "eemsdb");
+$connection = new mysqli("localhost", "root", "", "eemsdb");
 
-if ($conn->connect_error) {
+if ($connection->connect_error) {
     die("DB connection failed");
 }
 ?>
