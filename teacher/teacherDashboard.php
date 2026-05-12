@@ -82,14 +82,16 @@ SELECT COUNT(DISTINCT klasID) AS total
 FROM lidhjamesues
 WHERE mesuesID=$mesuesID
 ");
-$klasa = mysqli_fetch_assoc($q1)["total"];
+$row = mysqli_fetch_assoc($q1);
+$klasa = $row["total"];
 
 $q2 = mysqli_query($conn, "
 SELECT COUNT(DISTINCT lendaID) AS total
 FROM lidhjamesues
 WHERE mesuesID=$mesuesID
 ");
-$lendet = mysqli_fetch_assoc($q2)["total"];
+$row = mysqli_fetch_assoc($q2);
+$lendet = $row["total"];
 
 $q3 = mysqli_query($conn, "
 SELECT COUNT(DISTINCT nxenes.nxenesID) AS total
@@ -98,7 +100,8 @@ JOIN lidhjamesues
 ON nxenes.klasID = lidhjamesues.klasID
 WHERE lidhjamesues.mesuesID=$mesuesID
 ");
-$nxenesit = mysqli_fetch_assoc($q3)["total"];
+$row = mysqli_fetch_assoc($q3);
+$nxenesit = $row["total"];
 
 $klasatQuery = mysqli_query($conn, "
 SELECT DISTINCT klasa.emer
@@ -196,11 +199,8 @@ WHERE lidhjamesues.mesuesID = $mesuesID
             
             <div class="dashboard-container">
 
-                <img src="library/icons8-teacher-50.png"
-                alt="Dashboard"
-                class="dashboard-image">
-
-                <p>Dashboard-i ofron një përmbledhje të aktivitetit dhe të performances së mësuesit!</p>
+                <img src="library/icons8-teacher-50.png" alt="Dashboard" class="dashboard-image">
+                 <p>Dashboard-i ofron një përmbledhje të aktivitetit dhe të performances së mësuesit!</p>
 
             </div>
          <div class="dashboard-box">
@@ -209,35 +209,18 @@ WHERE lidhjamesues.mesuesID = $mesuesID
 
                 <div class="klasa">
                     <img src="library/icons8-class-50.png">
-
-                    <p>
-                        Klasa:
-                        <span>
-                            <?php echo $klasa; ?> klasa
-                        </span>
-                    </p>
+                    <p>Klasa:<span><?php echo $klasa; ?> klasa</span></p>
                 </div>
 
                 <div class="nxenesit">
                     <img src="library/icons8-student-50.png">
-
-                    <p>
-                        Nxënës:
-                        <span>
-                            <?php echo $nxenesit; ?> nxënës
-                        </span>
-                    </p>
+                    <p>Nxënës:<span><?php echo $nxenesit; ?> nxënës</span></p>
                 </div>
 
                 <div class="lendet">
                     <img src="library/icons8-book-50.png">
 
-                    <p>
-                        Lëndë:
-                        <span>
-                            <?php echo $lendet; ?> lëndë
-                        </span>
-                    </p>
+                    <p>Lëndë:<span><?php echo $lendet; ?> lëndë </span></p>
                 </div>
 
             </div>
@@ -245,47 +228,32 @@ WHERE lidhjamesues.mesuesID = $mesuesID
             
             <div class="lista">
 
-                <!-- KLASAT -->
                 <div class="klasa-lista">
 
                     <h3>Klasat:</h3>
 
                     <ul>
                         <?php while($row = mysqli_fetch_assoc($klasatQuery)) { ?>
-                            <li>
-                                -Klasa <?php echo $row["emer"]; ?>
-                            </li>
+                            <li>-Klasa <?php echo $row["emer"]; ?></li>
                         <?php } ?>
                     </ul>
 
-                    <button
-                    type="button"
-                    class="popup-btn"
-                    onclick="hapPopupKlasa()">
-                    Shto
-                    </button>
+                    <button type="button" class="popup-btn" onclick="hapPopupKlasa()"> Shto</button>
 
                 </div>
 
-                <!-- LËNDËT -->
+                
                 <div class="nxenesit-lista">
 
                     <h3>Lëndët:</h3>
 
                     <ul>
                         <?php while($row = mysqli_fetch_assoc($lendetQuery)) { ?>
-                            <li>
-                                -<?php echo $row["emri"]; ?>
-                            </li>
+                            <li>-<?php echo $row["emri"]; ?></li>
                         <?php } ?>
                     </ul>
 
-                    <button
-                    type="button"
-                    class="popup-btn"
-                    onclick="hapPopupLenda()">
-                    Shto
-                    </button>
+                    <button type="button" class="popup-btn" onclick="hapPopupLenda()"> Shto </button>
 
                 </div>
 
@@ -383,25 +351,14 @@ WHERE lidhjamesues.mesuesID = $mesuesID
 
     <div class="popup-content">
 
-        <span class="close"
-        onclick="mbyllPopupKlasa()">
-        </span>
+        <span class="close" onclick="mbyllPopupKlasa()"> </span>
 
         <h2>Shto klasë</h2>
 
         <form method="POST">
 
-            <input
-            type="text"
-            name="klasaRe"
-            placeholder="Shkruaj klasën"
-            required>
-
-            <button
-            type="submit"
-            name="shtoKlase">
-            Ruaj
-            </button>
+            <input type="text" name="klasaRe" placeholder="Shkruaj klasën" required>
+            <button type="submit" name="shtoKlase">Ruaj</button>
 
         </form>
 
@@ -415,26 +372,15 @@ WHERE lidhjamesues.mesuesID = $mesuesID
 
     <div class="popup-content">
 
-        <span class="close"
-        onclick="mbyllPopupLenda()">
-        ×
-        </span>
+        <span class="close" onclick="mbyllPopupLenda()"></span>
 
         <h2>Shto lëndë</h2>
 
         <form method="POST">
 
-            <input
-            type="text"
-            name="lendaRe"
-            placeholder="Shkruaj lëndën"
-            required>
+            <input type="text" name="lendaRe" placeholder="Shkruaj lëndën" required>
 
-            <button
-            type="submit"
-            name="shtoLende">
-            Ruaj
-            </button>
+            <button type="submit" name="shtoLende">Ruaj</button>
 
         </form>
 
@@ -464,5 +410,4 @@ function mbyllPopupLenda() {
 </script>
 
 </body>
-
 </html>
