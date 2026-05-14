@@ -87,7 +87,8 @@ $subject=mysqli_fetch_assoc($sqlSubject);
                         <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-dashboard-96%20(1).png"><span>Dashboard</span></a>
                     </li>
                     <li>
-                        <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-student-100.png"><span>Nxenes</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
+                        <a href="studentRegistration.php"><img src="../assets/images/admin/icons8-student-100.png"><span>Nxenes</span>
+                        <img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
                     </li>
                     <li>
                         <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-teacher-100.png"><span>Mesues</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
