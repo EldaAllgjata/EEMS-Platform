@@ -1,0 +1,215 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+    font-family:Arial;
+    min-height:100vh;
+}
+
+body{
+    padding:0;
+    margin:0;
+}
+
+.dashboard-container{
+    display:flex;
+    min-height:100vh;
+    align-items:flex-start;
+}
+
+.sidebar{
+    width:280px;
+    background:#361D6E;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    padding:30px 0;
+    position:fixed;
+    left:0;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+}
+
+.profile-section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+    margin-bottom:40px;
+    padding:0 15px;
+}
+
+.profile-image{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    display:block;
+    margin:0 auto;
+}
+
+.profile-name{
+    font-size:24px;
+    text-align:center;
+    font-weight:bold;
+    line-height:1.4;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    min-height:100%;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:18px 25px;
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+    width:100%;
+}
+
+.menu-item:hover{
+    background:#7A67A4;
+}
+
+.active-menu{
+    background:rgba(255,255,255,0.18);
+}
+
+.active-menu:hover{
+    background:rgba(255,255,255,0.25);
+}
+
+.menu-icon{
+    width:34px;
+    height:34px;
+}
+
+.menu-text{
+    font-size:22px;
+}
+
+.logout{
+    margin-top:60px;
+}
+
+.logout:hover{
+    background:#d62828;
+}
+
+.content{
+    margin-left:280px;
+    width:calc(100% - 280px);
+    padding:25px 40px 40px 40px;
+}
+
+.top-card{
+    background:white;
+    border-radius:25px;
+    padding:25px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom:40px;
+    flex-wrap:wrap;
+    margin-top:0;
+}
+
+.top-card img{
+    width:80px;
+}
+
+.top-card h1{
+    font-size:34px;
+    color:#361D6E;
+}
+
+@media(max-width:1100px){
+
+    .sidebar{
+        width:240px;
+    }
+
+    .content{
+        margin-left:240px;
+        width:calc(100% - 240px);
+        padding:30px;
+    }
+
+    .menu-text{
+        font-size:20px;
+    }
+}
+
+@media(max-width:900px){
+
+    .dashboard-container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        position:relative;
+        height:auto;
+        overflow:visible;
+    }
+
+    .content{
+        margin-left:0;
+        width:100%;
+        padding:20px;
+    }
+
+    .top-card{
+        padding:20px;
+    }
+
+    .top-card h1{
+        font-size:28px;
+    }
+
+    .menu-text{
+        font-size:18px;
+    }
+
+    .menu-icon{
+        width:30px;
+        height:30px;
+    }
+}
+
+@media(max-width:500px){
+
+    body{
+        padding:15px;
+    }
+
+    .top-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .top-card img{
+        width:65px;
+    }
+
+    .top-card h1{
+        font-size:24px;
+    }
+
+    .profile-name{
+        font-size:20px;
+    }
+}
