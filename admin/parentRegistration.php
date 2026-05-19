@@ -91,7 +91,7 @@ if(isset($_POST['register'])){
                     <a href="activities.php"><img src="../assets/images/admin/icons8-calendar-100.png"><span>Aktivitet</span></a>
                 </li>
                 <li>
-                    <a href="email.php"><img src="../assets/images/admin/icons8-email-96.png"><span>Email</span></a>
+                    <a href="inbox.php"><img src="../assets/images/admin/icons8-email-96.png"><span>Email</span></a>
                 </li>
                 <li>
                     <a href="profile.php"><img src="../assets/images/admin/icons8-profile-100.png"><span>Profili</span></a>
