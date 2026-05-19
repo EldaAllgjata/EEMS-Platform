@@ -17,7 +17,7 @@
                 if($users['role']=='admin'){
                     header("Location: admin/adminDashboard.php");
                 }
-                else if($users['role']=="mesues"){
+                else if($users['role']=="teacher"){
                     header("Location: teacher/teacherDashboard.php");
                 }
                 else{

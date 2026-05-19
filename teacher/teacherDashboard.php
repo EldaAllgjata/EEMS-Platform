@@ -1,121 +1,53 @@
 <?php
 session_start();
-require "config.php";
-
-if(!isset($_SESSION["mesuesID"])) {
-    header("Location: login.php");
+include "../config/db.php";
+if(!isset($_SESSION["id"])){
+    header("Location: ../index.php");
     exit();
 }
 
-$mesuesID = $_SESSION["mesuesID"];
+$mesuesID = $_SESSION["id"];
 
-if(isset($_POST["shtoKlase"])) {
-    $emri = $_POST["klasaRe"] ?? '';
 
-    if(!empty($emri)) {
-
-        $checkKlasa = mysqli_query($conn, "
-        SELECT * FROM klasa WHERE emer='$emri'
-        ");
-
-        if(mysqli_num_rows($checkKlasa) > 0) {
-            $row = mysqli_fetch_assoc($checkKlasa);
-            $klasID = $row["klasaID"];
-        } else {
-            mysqli_query($conn, "INSERT INTO klasa (emer) VALUES ('$emri')");
-            $klasID = mysqli_insert_id($conn);
-        }
-
-        $check = mysqli_query($conn, "
-        SELECT * FROM lidhjamesues 
-        WHERE mesuesID=$mesuesID AND klasID=$klasID
-        ");
-
-        if(mysqli_num_rows($check) == 0) {
-            mysqli_query($conn, "
-            INSERT INTO lidhjamesues (mesuesID, klasID) 
-            VALUES ($mesuesID, $klasID)
-            ");
-        }
-
-        header("Location: dashboard1.php");
-        exit();
-    }
-}
-
-if(isset($_POST["shtoLende"])) {
-    $emri = $_POST["lendaRe"] ?? '';
-
-    if(!empty($emri)) {
-
-        $checkLenda = mysqli_query($conn, "
-        SELECT * FROM lenda WHERE emri='$emri'
-        ");
-
-        if(mysqli_num_rows($checkLenda) > 0) {
-            $row = mysqli_fetch_assoc($checkLenda);
-            $lendaID = $row["id"];
-        } else {
-            mysqli_query($conn, "INSERT INTO lenda (emri) VALUES ('$emri')");
-            $lendaID = mysqli_insert_id($conn);
-        }
-
-        $check = mysqli_query($conn, "
-        SELECT * FROM lidhjamesues 
-        WHERE mesuesID=$mesuesID AND lendaID=$lendaID
-        ");
-
-        if(mysqli_num_rows($check) == 0) {
-            mysqli_query($conn, "
-            INSERT INTO lidhjamesues (mesuesID, lendaID) 
-            VALUES ($mesuesID, $lendaID)
-            ");
-        }
-
-        header("Location: dashboard1.php");
-        exit();
-    }
-}
-
-$q1 = mysqli_query($conn, "
-SELECT COUNT(DISTINCT klasID) AS total
+$q1 = mysqli_query($connection,
+"SELECT COUNT(DISTINCT klasID) AS total
 FROM lidhjamesues
-WHERE mesuesID=$mesuesID
-");
-$row = mysqli_fetch_assoc($q1);
-$klasa = $row["total"];
+WHERE mesuesID='$mesuesID'");
 
-$q2 = mysqli_query($conn, "
-SELECT COUNT(DISTINCT lendaID) AS total
+$row1 = mysqli_fetch_assoc($q1);
+$klasa = $row1["total"];
+
+$q2 = mysqli_query($connection,
+"SELECT COUNT(DISTINCT lendaID) AS total
 FROM lidhjamesues
-WHERE mesuesID=$mesuesID
-");
-$row = mysqli_fetch_assoc($q2);
-$lendet = $row["total"];
+WHERE mesuesID='$mesuesID'");
 
-$q3 = mysqli_query($conn, "
-SELECT COUNT(DISTINCT nxenes.nxenesID) AS total
+$row2 = mysqli_fetch_assoc($q2);
+$lendet = $row2["total"];
+
+$q3 = mysqli_query($connection,
+"SELECT COUNT(DISTINCT nxenes.nxenesID) AS total
 FROM nxenes
-JOIN lidhjamesues 
+JOIN lidhjamesues
 ON nxenes.klasID = lidhjamesues.klasID
-WHERE lidhjamesues.mesuesID=$mesuesID
-");
-$row = mysqli_fetch_assoc($q3);
-$nxenesit = $row["total"];
+WHERE lidhjamesues.mesuesID='$mesuesID'");
 
-$klasatQuery = mysqli_query($conn, "
-SELECT DISTINCT klasa.emer
+$row3 = mysqli_fetch_assoc($q3);
+$nxenesit = $row3["total"];
+
+$klasatQuery = mysqli_query($connection,
+"SELECT DISTINCT klasa.emer
 FROM klasa
-JOIN lidhjamesues ON klasa.klasaID = lidhjamesues.klasID
-WHERE lidhjamesues.mesuesID = $mesuesID
-");
+JOIN lidhjamesues
+ON klasa.klasaID = lidhjamesues.klasID
+WHERE lidhjamesues.mesuesID='$mesuesID'");
 
-$lendetQuery = mysqli_query($conn, "
-SELECT DISTINCT lenda.emri
+$lendetQuery = mysqli_query($connection,
+"SELECT DISTINCT lenda.emri
 FROM lenda
-JOIN lidhjamesues ON lenda.id = lidhjamesues.lendaID
-WHERE lidhjamesues.mesuesID = $mesuesID
-");
+JOIN lidhjamesues
+ON lenda.id = lidhjamesues.lendaID
+WHERE lidhjamesues.mesuesID='$mesuesID'");
 ?>
 
 <!DOCTYPE html>
@@ -137,59 +69,59 @@ WHERE lidhjamesues.mesuesID = $mesuesID
             <div>
                 <div class="top">
                     <div class="icon">
-                        <img src="library/icons8-male-user-90.png" alt="">
+                        <img src="../assets/images/teacher/icons8-male-user-90.png" alt="">
                     </div>
                     <p>Mireseerdhe,<br>mesues!</p>
                 </div>
 
                 <div class="menu">
 
-                    <div class="item active">
-                        <img src="library/icons8-dashboard-24.png">
-                        <span>Dashboard</span>
-                    </div>
+                    <a href="teacherDashboard.php" class="item active">
+                      <img src="../assets/images/teacher/icons8-dashboard-24.png">
+                      <span>Dashboard</span>
+                     </a>
 
-                    <div class="item">
-                        <img src="library/icons8-grades-48.png">
+                    <a href ="notat.php"  class="item">
+                        <img src="../assets/images/teacher/icons8-grades-48.png">
                         <span>Notat</span>
-                    </div>
+                    </a>
 
-                    <div class="item">
-                        <img src="library/icons8-attendance-64.png">
+                    <a href="mungesat.php" class="item">
+                        <img src="../assets/images/teacher/icons8-attendance-64.png">
                         <span>Mungesat</span>
-                    </div>
+                    </a>
 
-                    <div class="item">
-                        <img src="library/icons8-home-30 (1).png">
+                    <a href="detyrat.php" class="item">
+                        <img src="../assets/images/teacher/icons8-home-30 (1).png">
                         <span>Detyrat</span>
-                    </div>
+                    </a>
 
-                    <div class="item">
-                        <img src="library/icons8-schedule-50 (3).png">
+                    <a href="orariT.php" class="item">
+                        <img src="../assets/images/teacher/icons8-schedule-50 (3).png">
                         <span>Orari</span>
-                    </div>
+                    </a>
 
-                    <div class="item">
-                        <img src="library/icons8-calendar-50 (1).png">
+                    <a href="aktivitetet.php" class="item">
+                        <img src="../assets/images/teacher/icons8-calendar-50 (1).png">
                         <span>Aktivitetet</span>
-                    </div>
+                    </a>
 
-                    <div class="item">
-                        <img src="library/icons8-mail-50.png">
+                    <a href="email.php" class="item">
+                        <img src="../assets/images/teacher/icons8-mail-50.png">
                         <span>Email</span>
-                    </div>
+                    </a>
 
-                    <div class="item">
-                        <img src="library/icons8-test-account-64.png">
+                    <a href="profile.php" class="item">
+                        <img src="../assets/images/teacher/icons8-test-account-64.png">
                         <span>Profili</span>
-                    </div>
+                    </a>
                 </div>
             </div>
 
-            <div class="item">
-                <img src="library/icons8-log-out-50.png">
+            <a href="../index.php" class="item">
+              <img src="../assets/images/teacher/icons8-log-out-50.png">
                 <span>Dil</span>
-            </div>
+            </a>
 
         </div>
 
@@ -199,8 +131,15 @@ WHERE lidhjamesues.mesuesID = $mesuesID
             
             <div class="dashboard-container">
 
-                <img src="library/icons8-teacher-50.png" alt="Dashboard" class="dashboard-image">
-                 <p>Dashboard-i ofron një përmbledhje të aktivitetit dhe të performances së mësuesit!</p>
+                <img src="../assets/images/teacher/icons8-teacher-50.png" alt="Dashboard" class="dashboard-image">
+                 <h2>Dashboard-i ofron një përmbledhje të aktivitetit dhe të performances së mësuesit!</h2>
+                 <style>
+                    
+                    .dashboard-container h2{
+                        font-size:30px;
+                        color:#32146b;
+                    }
+                    </style>
 
             </div>
          <div class="dashboard-box">
@@ -208,17 +147,17 @@ WHERE lidhjamesues.mesuesID = $mesuesID
             <div class="statistika">
 
                 <div class="klasa">
-                    <img src="library/icons8-class-50.png">
+                    <img src="../assets/images/teacher/icons8-class-50.png">
                     <p>Klasa:<span><?php echo $klasa; ?> klasa</span></p>
                 </div>
 
                 <div class="nxenesit">
-                    <img src="library/icons8-student-50.png">
+                    <img src="../assets/images/teacher/icons8-student-50.png">
                     <p>Nxënës:<span><?php echo $nxenesit; ?> nxënës</span></p>
                 </div>
 
                 <div class="lendet">
-                    <img src="library/icons8-book-50.png">
+                    <img src="../assets/images/teacher/icons8-book-50.png">
 
                     <p>Lëndë:<span><?php echo $lendet; ?> lëndë </span></p>
                 </div>
@@ -238,7 +177,7 @@ WHERE lidhjamesues.mesuesID = $mesuesID
                         <?php } ?>
                     </ul>
 
-                    <button type="button" class="popup-btn" onclick="hapPopupKlasa()"> Shto</button>
+                    
 
                 </div>
 
@@ -253,7 +192,7 @@ WHERE lidhjamesues.mesuesID = $mesuesID
                         <?php } ?>
                     </ul>
 
-                    <button type="button" class="popup-btn" onclick="hapPopupLenda()"> Shto </button>
+                    
 
                 </div>
 
@@ -290,7 +229,7 @@ WHERE lidhjamesues.mesuesID = $mesuesID
                             <div class="x-axis">
                                 <span>10A</span>
                                 <span>10B</span>
-                                <span>11C</span>
+                                <span>12H</span>
                             </div>
 
                         </div>
@@ -325,8 +264,8 @@ WHERE lidhjamesues.mesuesID = $mesuesID
                             </div>
 
                             <div class="x-axis">
-                                <span>Fizikë</span>
-                                <span>Matematikë</span>
+                                <span>Muzikë</span>
+                                <span>Kimi</span>
                                 <span>TIK</span>
                             </div>
 
@@ -344,70 +283,5 @@ WHERE lidhjamesues.mesuesID = $mesuesID
     </div>
 
 </div>
-
-
-
-<div class="popup" id="popupKlasa">
-
-    <div class="popup-content">
-
-        <span class="close" onclick="mbyllPopupKlasa()"> </span>
-
-        <h2>Shto klasë</h2>
-
-        <form method="POST">
-
-            <input type="text" name="klasaRe" placeholder="Shkruaj klasën" required>
-            <button type="submit" name="shtoKlase">Ruaj</button>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-
-<div class="popup" id="popupLenda">
-
-    <div class="popup-content">
-
-        <span class="close" onclick="mbyllPopupLenda()"></span>
-
-        <h2>Shto lëndë</h2>
-
-        <form method="POST">
-
-            <input type="text" name="lendaRe" placeholder="Shkruaj lëndën" required>
-
-            <button type="submit" name="shtoLende">Ruaj</button>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-<script>
-
-function hapPopupKlasa() {
-    document.getElementById("popupKlasa").style.display = "flex";
-}
-
-function mbyllPopupKlasa() {
-    document.getElementById("popupKlasa").style.display = "none";
-}
-
-function hapPopupLenda() {
-    document.getElementById("popupLenda").style.display = "flex";
-}
-
-function mbyllPopupLenda() {
-    document.getElementById("popupLenda").style.display = "none";
-}
-
-</script>
-
 </body>
 </html>
