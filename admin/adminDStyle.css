@@ -357,6 +357,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
+    grid-column: span 2;
 }
 .buttoncontainer button{
     border: none;
@@ -601,4 +602,501 @@ form.kerkimi{
 
 .inputFull{
     grid-column: span 2;
+}
+.addbutton{
+    margin-right:auto;
+    border: none;
+    background-color: transparent;
+    color: #361D6E;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/*profile page  */
+.profiledis{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+.impInf{
+    background-color: #F0F0F0;
+    padding: 35px 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 3px solid #2B79FF;
+    height: fit-content;
+}
+.impInf{
+    color: #1D49B8;
+    font-size: 20px;
+}
+.imagecontainer{
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+.imagecontainer img{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    border: 5px solid white;
+}
+.otherdata{
+    width: 80%;
+    margin-left: auto;
+    border-bottom: 3px solid #DCDCDC;
+    border-right: 3px solid #DCDCDC;
+    border-left: 3px solid #DCDCDC;
+}
+.profilebutton{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+}
+.profilebutton button{
+    width: 50%;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 30px 15px;
+    text-align: center;
+    background-color: #DCDCDC;
+    border: none;
+}
+.profilebutton button:hover{
+    background-color: white;
+    border-top: 3px solid #2B79FF;
+    border-right: 3px solid #2B79FF;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+button.clicked{
+    background-color: white;
+    border-top: 3px solid #2B79FF;
+    border-right: 3px solid #2B79FF;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.tablecontainer{
+    padding: 10px;
+    width: 100%;
+}
+.otherdata table{
+    width: 100%;
+    margin-top: 0;
+    border: 3px solid #E7E7E7;
+}
+.otherdata table tbody td{
+    border: 3px solid #E7E7E7;
+    font-size: 25px;
+    padding: 30px 20px ;
+    width: 50%;
+    text-align: right;
+}
+.otherdata table tbody td:first-child{
+    font-weight: 600;
+    text-align: left;
+}
+#passcontent{
+    display: none;
+}
+.passcontainer{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.passcontainer form{
+    border: 3px solid #E7E7E7;
+    background-color: #F0F0F0;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.passinput{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.passinput label{
+    width: 25%;
+    font-size: 25px;
+    text-align: right;
+    font-weight: 600;
+}
+.passcontainer form input{
+    margin-left: auto;
+    width: 70%;
+    font-size: 25px;
+    padding: 20px;
+}
+.butonipass{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.butonipass button{
+    width: 40%;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    padding: 15px;
+    color: white;
+    background: linear-gradient(to right, #1D49B8, #2E273E); 
+    border: none;
+    border-radius: 20px;
+}
+#calendar{
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+.modal{
+    display:none;
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.5);
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:999;
+}
+
+.modal-content{
+
+    width:450px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+    animation:modalAnimation 0.3s ease;
+}
+
+.modal-content h2{
+
+    margin-bottom:20px;
+
+    color:#333;
+
+    font-size:24px;
+
+    text-align:center;
+}
+
+.modal-content form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+}
+
+.modal-content label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#444;
+}
+
+.modal-content input,
+.modal-content textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #ccc;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    outline:none;
+
+    transition:0.3s;
+}
+
+.modal-content textarea{
+
+    min-height:100px;
+
+    resize:none;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus{
+
+    border-color:#4f46e5;
+
+    box-shadow:0 0 5px rgba(79,70,229,0.3);
+}
+
+.modal-content button{
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.modal-content button[type="submit"]{
+
+    background:#4f46e5;
+
+    color:white;
+}
+
+.modal-content button[type="submit"]:hover{
+
+    background:#4338ca;
+}
+
+#closeModal{
+
+    background:#e5e7eb;
+
+    color:#333;
+}
+
+#closeModal:hover{
+
+    background:#d1d5db;
+}
+
+@keyframes modalAnimation{
+
+    from{
+
+        transform:scale(0.8);
+        opacity:0;
+    }
+
+    to{
+
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.emailcontainer {
+    width: 100%;
+    background: #f6f8fc;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.email-box {
+    width: 100%;
+    max-width: 700px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.email-box h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #202124;
+}
+
+.email-box input,
+.email-box textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 15px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+    background: #fff;
+}
+
+.email-box input:focus,
+.email-box textarea:focus {
+    border: 1px solid #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+}
+
+.email-box textarea {
+    height: 180px;
+    resize: none;
+}
+
+.email-box button {
+    background: #1a73e8;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.email-box button:hover {
+    background: #1558b0;
+}
+/*inbox */
+.inboxcontainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.inbox {
+    width: 70%;
+    background: #f6f8fc;
+    padding: 20px;
+    border-radius: 12px;
+}
+.searchemail {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.searchemail h1 {
+    font-size: 22px;
+    color: #202124;
+}
+.searchemail form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.searchemail form input {
+    margin-left: auto;
+    padding: 10px 14px;
+    border: 1px solid #dadce0;
+    border-radius: 20px;
+    outline: none;
+    width: 250px;
+    transition: 0.2s;
+}
+.searchemail button{
+    border: none;
+    background-color: transparent;
+}
+.searchemail form button img{
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+}
+.searchemail input:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+}
+
+.emailnumber {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.emailnumber h1 {
+    font-size: 18px;
+    color: #5f6368;
+}
+
+.inbox table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.inbox table tr {
+    border-bottom: 1px solid #eee;
+    transition: 0.2s;
+}
+
+.inbox table tr:hover {
+    background: #f1f3f4;
+    cursor: pointer;
+}
+
+.inbox table td {
+    padding: 14px;
+    vertical-align: top;
+    font-size: 14px;
+    color: #202124;
+}
+
+.inbox table td:first-child {
+    font-weight: 600;
+    width: 180px;
+}
+
+.inbox table td:nth-child(2) {
+    color: #5f6368;
+}
+
+.inbox table td:last-child {
+    text-align: right;
+    color: #80868b;
+    font-size: 12px;
+}
+.inboxbtn{
+    width: 15%;
+    margin-right: auto;
+}
+.inboxbtn a{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+.inboxbtn button{
+    width: 100%;
+    background: #31B900;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.inboxbtn button:hover {
+    background: #1558b0;
 }

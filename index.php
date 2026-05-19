@@ -1,6 +1,5 @@
 <?php
     include 'config/db.php';
-    error_reporting(0);
     session_start();
 
     if(isset($_POST['butoni'])){

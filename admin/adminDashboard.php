@@ -1,6 +1,6 @@
 <?php 
 include '../config/db.php';
-
+error_reporting(0);
 session_start();
 
 if(!isset($_SESSION['id'])){
@@ -91,28 +91,28 @@ $subject=mysqli_fetch_assoc($sqlSubject);
                         <img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
                     </li>
                     <li>
-                        <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-teacher-100.png"><span>Mesues</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
+                        <a href="teacherRegistration.php"><img src="../assets/images/admin/icons8-teacher-100.png"><span>Mesues</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
                     </li>
                     <li>
-                        <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-parent-90.png"><span>Prinder</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
+                        <a href="parentRegistration.php"><img src="../assets/images/admin/icons8-parent-90.png"><span>Prinder</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
                     </li>
                     <li>
-                        <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-class-100.png"><span>Klasa</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
+                        <a href="classRegistration.php"><img src="../assets/images/admin/icons8-class-100.png"><span>Klasa</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
                     </li>
                     <li>
-                        <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-money-100.png"><span>Pagesa</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
+                        <a href="payment.php"><img src="../assets/images/admin/icons8-money-100.png"><span>Pagesa</span></a>
                     </li>
                     <li>
-                        <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-calendar-100.png"><span>Aktivitet</span></a>
+                        <a href="activities.php"><img src="../assets/images/admin/icons8-calendar-100.png"><span>Aktivitet</span></a>
                     </li>
                     <li>
-                        <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-email-96.png"><span>Email</span></a>
+                        <a href="inbox.php"><img src="../assets/images/admin/icons8-email-96.png"><span>Email</span></a>
                     </li>
                     <li>
-                        <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-profile-100.png"><span>Profili</span></a>
+                        <a href="profile.php"><img src="../assets/images/admin/icons8-profile-100.png"><span>Profili</span></a>
                     </li>
                     <li class="logout">
-                        <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-logout-rounded-100.png"><span>Dil</span></a>
+                        <a href="logout.php"><img src="../assets/images/admin/icons8-logout-rounded-100.png"><span>Dil</span></a>
                     </li>
                 </ul>
             </div>

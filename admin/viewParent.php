@@ -17,24 +17,22 @@ $name=$nameResult['emri'];
 $classquery="SELECT klasaID,emer FROM klasa";
 $queryresult=mysqli_query($connection,$classquery);
 
-$yearquery="SELECT DISTINCT YEAR(vitiStudimit) AS viti FROM nxenes";
-$yearresult=mysqli_query($connection,$yearquery);
-
-$sqlsearch="SELECT * FROM nxenes WHERE 1=1";
-
+$sqlsearch="SELECT * FROM prinder 
+WHERE 1=1";
 if(isset($_GET['search']) && !empty($_GET['search'])){
     $searchinput=$_GET['search'];
-    $sqlsearch.=" AND emerMbiemer LIKE '%$searchinput%'";
+    $sqlsearch.=" AND prinder.emerMbiemer LIKE '%$searchinput%'";
 }
 if(isset($_GET['class']) && !empty($_GET['class'])){
     $classinput=(int)$_GET['class'];
-    $sqlsearch.=" AND klasID=$classinput";
+    $sqlsearch .= "
+    AND prinder.prind_id IN (
+        SELECT nxenes.prindID
+        FROM nxenes
+        WHERE nxenes.klasID = $classinput
+    )";
 }
-if(isset($_GET['schoolyear']) && !empty($_GET['schoolyear'])){
-    $schoolinput=$_GET['schoolyear'];
-    $sqlsearch.=" AND year(vitiStudimit)=$schoolinput";
-}
-
+$sqlsearch.=" GROUP BY prinder.prind_id";
 $sqlSearchResult=mysqli_query($connection,$sqlsearch);
 ?>
 <!DOCTYPE html>
@@ -56,20 +54,20 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
                 <li>
                     <a href="adminDashboard.php"><img src="../assets/images/admin/icons8-dashboard-96%20(1).png"><span>Dashboard</span></a>
                 </li>
-                <li class="activeElement" onclick="modifymenu(this)">
-                    <div class="menuItem">
-                        <img src="../assets/images/admin/icons8-student-100.png"><span>Nxenes</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon">
-                    </div>
-                    <ul class="submenu">
-                        <li><a href="studentRegistration.php">Shto nxenes</a></li>
-                        <li><a href="viewStudents.php">Modifiko nxenes</a></li>
-                    </ul>
+                <li>
+                    <a href="studentRegistration.php"><img src="../assets/images/admin/icons8-student-100.png"><span>Nxenes</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
                 </li>
                 <li>
                     <a href="teacherRegistration.php"><img src="../assets/images/admin/icons8-teacher-100.png"><span>Mesues</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
                 </li>
-                <li>
-                    <a href="parentRegistration.php"><img src="../assets/images/admin/icons8-parent-90.png"><span>Prinder</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
+                <li class="activeElement" onclick="modifymenu(this)">
+                    <div class="menuItem">
+                        <img src="../assets/images/admin/icons8-parent-90.png"><span>Prinder</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon">
+                    </div>
+                    <ul class="submenu">
+                        <li><a href="parentRegistration.php">Shto prind</a></li>
+                        <li><a href="viewParent.php">Modifiko prind</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="classRegistration.php"><img src="../assets/images/admin/icons8-class-100.png"><span>Klasa</span><img src="../assets/images/admin/icons8-expand-arrow-100.png" class="arrow-icon"></a>
@@ -96,23 +94,17 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
         <div class="pageTitle">
             <img src="../assets/images/admin/icons8-dashboard-96%20(2).png">
             <div class="titleContent">
-                <h1>Nxenesit</h1>
-                <p>Shiko te dhenat e nxenesve</p>
+                <h1>Prinderit</h1>
+                <p>Shiko te dhenat e prinderve</p>
             </div>
         </div>
         <div class="pageContent con">
             <form method="GET" class="kerkimi" id="formsubmit">
-                <input type="text" id="searchname" name="search" placeholder="Kerko nxenes">
+                <input type="text" id="searchname" name="search" placeholder="Kerko prind">
                 <select name="class" id="class">
                     <option value="">Zgjidh klasen</option>
                     <?php while($result=mysqli_fetch_assoc($queryresult)){ ?>
                     <option value="<?php echo $result['klasaID']?>"><?php echo $result['emer']?></option>
-                    <?php } ?>
-                </select>
-                <select name="schoolyear" id="year">
-                    <option value="">Zgjidh vitin </option>
-                    <?php while($result=mysqli_fetch_assoc($yearresult)){ ?>
-                    <option value="<?php echo $result['viti']?>"><?php echo $result['viti']?></option>
                     <?php } ?>
                 </select>
                 <button type="submit"><img src="../assets/images/admin/icons8-search-100.png"></button>
@@ -126,31 +118,51 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
                         <th>Datelindja</th>
                         <th>Nr.telefonit</th>
                         <th>Email</th>
-                        <th>Prindi</th>
+                        <th>Femijet</th>
                         <th>Klasa</th>
-                        <th>Viti</th>
-                        <th>Nr.ID</th>
                         <th>Modifiko</th>
                         <th>Fshi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($student=mysqli_fetch_assoc($sqlSearchResult)){ ?>
+                    <?php while($parent=mysqli_fetch_assoc($sqlSearchResult)){ ?>
                     <tr>
-                        <td><?php echo $student['nxenesID']?></td>
-                        <td><?php echo $student['emerMbiemer']?></td>
-                        <td><?php echo $student['gjinia']?></td>
-                        <td><?php echo $student['datelindja']?></td>
-                        <td><?php echo $student['nrTel']?></td>
-                        <td><?php echo $student['email']?></td>
-                        <td><?php echo $student['prindID']?></td>
-                        <td><?php echo $student['klasID']?></td>
-                        <td><?php echo $student['vitiStudimit']?></td>
-                        <td><?php echo $student['nrID']?></td>
-                        <td><button type="button" onclick="openModal('<?php echo $student['nxenesID']; ?>','<?php echo $student['emerMbiemer']; ?>','<?php echo $student['gjinia']; ?>','<?php echo $student['datelindja']; ?>','<?php echo $student['nrTel']; ?>','<?php echo $student['email']; ?>','<?php echo $student['prindID']; ?>','<?php echo $student['klasID']; ?>','<?php echo $student['vitiStudimit']; ?>','<?php echo $student['nrID']; ?>')">
-                                <img src="../assets/images/admin/icons8-edit-96.png"></button>
+                        <td><?php echo $parent['prind_id']?></td>
+                        <td><?php echo $parent['emerMbiemer']?></td>
+                        <td><?php echo $parent['Gjinia']?></td>
+                        <td><?php echo $parent['Datelindja']?></td>
+                        <td><?php echo $parent['nrTel']?></td>
+                        <td><?php echo $parent['email']?></td>
+                        <td>
+                            <?php
+                                $prindID = $parent['prind_id'];
+                                $sqlFemije = "SELECT emerMbiemer FROM nxenes WHERE prindID = $prindID";
+                                $resultFemije = mysqli_query($connection, $sqlFemije);
+
+                                while($femije = mysqli_fetch_assoc($resultFemije)){
+                                    echo $femije['emerMbiemer'] . "<br>";
+                                }
+                            ?>
                         </td>
-                        <td><a href="delete.php?id=<?php echo $student['nxenesID']; ?>" onclick="return confirm('A je i sigurt qe do ta fshish kete nxenes?')"><img src="../assets/images/admin/icons8-delete-64.png"></a></td>
+
+                        <td>
+                            <?php
+                                $sqlKlasa = "SELECT DISTINCT klasa.emer 
+                                FROM klasa 
+                                JOIN nxenes ON nxenes.klasID = klasa.klasaID
+                                WHERE nxenes.prindID = $prindID";
+
+                                $resultKlasa = mysqli_query($connection, $sqlKlasa);
+
+                                while($klasa = mysqli_fetch_assoc($resultKlasa)){
+                                    echo $klasa['emer'] . "<br>";
+                                }
+                            ?>
+                        </td>
+                            <td><button type="button" onclick="openModal('<?php echo $parent['prind_id']; ?>','<?php echo $parent['emerMbiemer']; ?>','<?php echo $parent['Gjinia']; ?>','<?php echo $parent['Datelindja']; ?>','<?php echo $parent['nrTel']; ?>','<?php echo $parent['email']; ?>')">
+                                    <img src="../assets/images/admin/icons8-edit-96.png"></button>
+                            </td>
+                            <td><a href="deleteparent.php?id=<?php echo $parent['prind_id']; ?>" onclick="return confirm('A je i sigurt qe do ta fshish kete prind?')"><img src="../assets/images/admin/icons8-delete-64.png"></a></td>
                     </tr>
                     <?php } ?>
                 </tbody>
@@ -160,7 +172,7 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
     <div id="overlay"></div>
 
     <div id="editModal">
-        <h2>Modifiko Nxënësin</h2>
+        <h2>Modifiko Prindin</h2>
 
         <div class="modalForm">
 
@@ -194,37 +206,6 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
                 <input type="email" id="editEmail">
             </div>
 
-            <div class="inputGroup">
-                <label>Prindi</label>
-                <input type="text" id="editParent">
-            </div>
-
-            <div class="inputGroup">
-                <label>Klasa</label>
-                <select id="editClass">
-                    <?php
-                $classquery2 = "SELECT * FROM klasa";
-                $result2 = mysqli_query($connection,$classquery2);
-
-                while($class = mysqli_fetch_assoc($result2)){
-                ?>
-                    <option value="<?php echo $class['klasaID']; ?>">
-                        <?php echo $class['emer']; ?>
-                    </option>
-                    <?php } ?>
-                </select>
-            </div>
-
-            <div class="inputGroup">
-                <label>Viti Studimit</label>
-                <input type="date" id="editYear">
-            </div>
-
-            <div class="inputGroup">
-                <label>Nr ID</label>
-                <input type="text" id="editNrid">
-            </div>
-
         </div>
 
         <div class="modalButtons">
@@ -249,7 +230,6 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
 
         const inputsearch = document.getElementById("searchname");
         const classsearch = document.getElementById("class");
-        const yearsearch = document.getElementById("year");
         const forma = document.getElementById("formsubmit");
         inputsearch.addEventListener("searchname", function() {
             if (this.value.trim() === "") {
@@ -263,11 +243,7 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
             gender,
             birth,
             phone,
-            email,
-            parent,
-            classid,
-            year,
-            nrid
+            email
         ) {
 
             document.getElementById("overlay").style.display = "block";
@@ -279,10 +255,6 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
             document.getElementById("editBirth").value = birth;
             document.getElementById("editPhone").value = phone;
             document.getElementById("editEmail").value = email;
-            document.getElementById("editParent").value = parent;
-            document.getElementById("editClass").value = classid;
-            document.getElementById("editYear").value = year;
-            document.getElementById("editNrid").value = nrid;
         }
 
         function closeModal() {
@@ -299,14 +271,10 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
             let birth = document.getElementById("editBirth").value;
             let phone = document.getElementById("editPhone").value;
             let email = document.getElementById("editEmail").value;
-            let parent = document.getElementById("editParent").value;
-            let classid = document.getElementById("editClass").value;
-            let year = document.getElementById("editYear").value;
-            let nrid = document.getElementById("editNrid").value;
 
             let xhr = new XMLHttpRequest();
 
-            xhr.open("POST", "updateStudent.php", true);
+            xhr.open("POST", "updateParent.php", true);
 
             xhr.setRequestHeader(
                 "Content-type",
@@ -326,11 +294,7 @@ $sqlSearchResult=mysqli_query($connection,$sqlsearch);
                 "&gender=" + encodeURIComponent(gender) +
                 "&birth=" + encodeURIComponent(birth) +
                 "&phone=" + encodeURIComponent(phone) +
-                "&email=" + encodeURIComponent(email) +
-                "&parent=" + encodeURIComponent(parent) +
-                "&classid=" + encodeURIComponent(classid) +
-                "&year=" + encodeURIComponent(year) +
-                "&nrid=" + encodeURIComponent(nrid)
+                "&email=" + encodeURIComponent(email)
             );
         }
     </script>
