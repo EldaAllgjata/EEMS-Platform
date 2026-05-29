@@ -58,3 +58,7 @@ grades
 attendance
 payments
 schedule
+
+Elda Allgjata
+Fjona Karaj
+Iris Memo
