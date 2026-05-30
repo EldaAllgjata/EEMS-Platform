@@ -238,7 +238,7 @@ else{
     <aside class="sidebar">
 
         <div class="profile-section">
-            <img src="/EEMS-Platform/assets/images/parent/user.png" class="profile-image">
+            <img src="../assets/images/parent/user.png" class="profile-image">
             <p class="profile-name">
                 Mirëserdhe,<br>
                 <?php echo $parentName; ?>
@@ -248,7 +248,7 @@ else{
         <nav class="menu">
 
             <a href="parentDashboard.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item">
-                <img src="/EEMS-Platform/assets/images/parent/dashboard.png"
+                <img src="../assets/images/parent/dashboard.png"
                      class="menu-icon">
                 <span class="menu-text">
                     Dashboard
@@ -256,63 +256,63 @@ else{
             </a>
 
             <a href="parentGrades.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item">
-                <img src="/EEMS-Platform/assets/images/parent/certificate.png" class="menu-icon">
+                <img src="../assets/images/parent/certificate.png" class="menu-icon">
                 <span class="menu-text">
                     Nota
                 </span>
             </a>
 
             <a href="parentAbsences.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item">
-                <img src="/EEMS-Platform/assets/images/parent/student.png" class="menu-icon">
+                <img src="../assets/images/parent/student.png" class="menu-icon">
                 <span class="menu-text">
                     Mungesa
                 </span>
             </a>
 
             <a href="parentSchedule.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item">
-                <img src="/EEMS-Platform/assets/images/parent/calendar.png" class="menu-icon">
+                <img src="../assets/images/parent/calendar.png" class="menu-icon">
                 <span class="menu-text">
                     Orari
                 </span>
             </a>
 
             <a href="parentPayments.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item">
-                <img src="/EEMS-Platform/assets/images/parent/fee.png" class="menu-icon">
+                <img src="../assets/images/parent/fee.png" class="menu-icon">
                 <span class="menu-text">
                     Pagesat
                 </span>
             </a>
 
             <a href="parentMessages.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item">
-                <img src="/EEMS-Platform/assets/images/parent/chatting.png" class="menu-icon">
+                <img src="../assets/images/parent/chatting.png" class="menu-icon">
                 <span class="menu-text">
                     Mesazhet
                 </span>
             </a>
 
             <a href="parentNotifications.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item">
-                <img src="/EEMS-Platform/assets/images/parent/notification.png" class="menu-icon">
+                <img src="../assets/images/parent/notification.png" class="menu-icon">
                 <span class="menu-text">
                     Njoftime
                 </span>
             </a>
 
             <a href="parentStatistics.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item">
-                <img src="/EEMS-Platform/assets/images/parent/trend.png" class="menu-icon">
+                <img src="../assets/images/parent/trend.png" class="menu-icon">
                 <span class="menu-text">
                     Statistika
                 </span>
             </a>
 
             <a href="parentProfile.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item active-menu" id="profileLink">
-                <img src="/EEMS-Platform/assets/images/parent/person.png" class="menu-icon">
+                <img src="../assets/images/parent/person.png" class="menu-icon">
                 <span class="menu-text">
                     Profili
                 </span>
             </a>
 
             <a href="../index.php" class="menu-item logout" onclick="sessionStorage.clear();">
-                <img src="/EEMS-Platform/assets/images/parent/logout.png" class="menu-icon">
+                <img src="../assets/images/parent/logout.png" class="menu-icon">
                 <span class="menu-text">
                     Dil
                 </span>
@@ -325,7 +325,7 @@ else{
     <main class="content">
 
         <div class="top-card">
-            <img src="/EEMS-Platform/assets/images/parent/account,,1.png">
+            <img src="../assets/images/parent/account,,1.png">
             <h1>
                 Shiko profilin
             </h1>
@@ -336,7 +336,7 @@ else{
             <div class="profile-container">
 
                 <div class="left-profile">
-                    <img src="/EEMS-Platform/assets/images/parent/icons8-administrator-male-94.png">
+                    <img src="../assets/images/parent/icons8-administrator-male-94.png">
                     <h3>
                         <?php echo $parentName; ?>
                     </h3>

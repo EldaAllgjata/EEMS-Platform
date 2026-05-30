@@ -338,7 +338,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
             <div class="profile-section">
 
-                <img src="/EEMS-Platform/assets/images/parent/user.png" class="profile-image">
+                <img src="../assets/images/parent/user.png" class="profile-image">
 
                 <p class="profile-name">
                     Mirëserdhe,<br>
@@ -351,7 +351,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="parentDashboard.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item active-menu">
 
-                    <img src="/EEMS-Platform/assets/images/parent/dashboard.png" class="menu-icon">
+                    <img src="../assets/images/parent/dashboard.png" class="menu-icon">
 
                     <span class="menu-text">
                         Dashboard
@@ -361,7 +361,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="parentGrades.php" class="menu-item">
 
-                    <img src="/EEMS-Platform/assets/images/parent/certificate.png" class="menu-icon">
+                    <img src="../assets/images/parent/certificate.png" class="menu-icon">
 
                     <span class="menu-text">
                         Nota
@@ -371,7 +371,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="parentAbsences.php" class="menu-item">
 
-                    <img src="/EEMS-Platform/assets/images/parent/student.png" class="menu-icon">
+                    <img src="../assets/images/parent/student.png" class="menu-icon">
 
                     <span class="menu-text">
                         Mungesa
@@ -381,7 +381,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="parentSchedule.php" class="menu-item">
 
-                    <img src="/EEMS-Platform/assets/images/parent/calendar.png" class="menu-icon">
+                    <img src="../assets/images/parent/calendar.png" class="menu-icon">
 
                     <span class="menu-text">
                         Orari
@@ -391,7 +391,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="parentPayments.php" class="menu-item">
 
-                    <img src="/EEMS-Platform/assets/images/parent/fee.png" class="menu-icon">
+                    <img src="../assets/images/parent/fee.png" class="menu-icon">
 
                     <span class="menu-text">
                         Pagesat
@@ -401,7 +401,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="parentMessages.php" class="menu-item">
 
-                    <img src="/EEMS-Platform/assets/images/parent/chatting.png" class="menu-icon">
+                    <img src="../assets/images/parent/chatting.png" class="menu-icon">
 
                     <span class="menu-text">
                         Mesazhet
@@ -411,7 +411,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="parentNotifications.php" class="menu-item">
 
-                    <img src="/EEMS-Platform/assets/images/parent/notification.png" class="menu-icon">
+                    <img src="../assets/images/parent/notification.png" class="menu-icon">
 
                     <span class="menu-text">
                         Njoftime
@@ -421,7 +421,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="parentStatistics.php" class="menu-item">
 
-                    <img src="/EEMS-Platform/assets/images/parent/trend.png" class="menu-icon">
+                    <img src="../assets/images/parent/trend.png" class="menu-icon">
 
                     <span class="menu-text">
                         Statistika
@@ -431,7 +431,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="parentProfile.php" class="menu-item">
 
-                    <img src="/EEMS-Platform/assets/images/parent/person.png" class="menu-icon">
+                    <img src="../assets/images/parent/person.png" class="menu-icon">
 
                     <span class="menu-text">
                         Profili
@@ -441,7 +441,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
                 <a href="../index.php" class="menu-item logout" onclick="sessionStorage.clear();">
 
-                    <img src="/EEMS-Platform/assets/images/parent/logout.png" class="menu-icon">
+                    <img src="../assets/images/parent/logout.png" class="menu-icon">
 
                     <span class="menu-text">
                         Dil
@@ -457,7 +457,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
             <div class="top-card">
 
-                <img src="/EEMS-Platform/assets/images/parent/dashboardLejla.png">
+                <img src="../assets/images/parent/dashboardLejla.png">
 
                 <h1>
                     Informacion i përgjithshëm për nxënësin
@@ -467,7 +467,7 @@ $latestMessage = mysqli_fetch_assoc($latestMessageResult);
 
             <section class="student-section">
 
-                <img src="/EEMS-Platform/assets/images/parent/bachelor.png" class="student-avatar">
+                <img src="../assets/images/parent/bachelor.png" class="student-avatar">
 
                 <div class="student-info">
 
