@@ -239,7 +239,7 @@ $gradesResult = mysqli_query($connection, $gradesQuery);
 
         <div class="profile-section">
 
-            <img src="/EEMS-Platform/assets/images/parent/user.png" class="profile-image">
+            <img src="../assets/images/parent/user.png" class="profile-image">
 
             <p class="profile-name">
                 Mirëserdhe,<br>
@@ -252,70 +252,70 @@ $gradesResult = mysqli_query($connection, $gradesQuery);
 
             <a href="parentDashboard.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item">
 
-                <img src="/EEMS-Platform/assets/images/parent/dashboard.png" class="menu-icon">
+                <img src="../assets/images/parent/dashboard.png" class="menu-icon">
                 <span class="menu-text">Dashboard</span>
 
             </a>
 
             <a href="parentGrades.php?nxenesID=<?php echo $nxenesID; ?>" class="menu-item active-menu">
 
-                <img src="/EEMS-Platform/assets/images/parent/certificate.png" class="menu-icon">
+                <img src="../assets/images/parent/certificate.png" class="menu-icon">
                 <span class="menu-text">Nota</span>
 
             </a>
 
             <a href="parentAbsences.php" class="menu-item">
 
-                <img src="/EEMS-Platform/assets/images/parent/student.png" class="menu-icon">
+                <img src="../assets/images/parent/student.png" class="menu-icon">
                 <span class="menu-text">Mungesa</span>
 
             </a>
 
             <a href="parentSchedule.php" class="menu-item">
 
-                <img src="/EEMS-Platform/assets/images/parent/calendar.png" class="menu-icon">
+                <img src="../assets/images/parent/calendar.png" class="menu-icon">
                 <span class="menu-text">Orari</span>
 
             </a>
 
             <a href="parentPayments.php" class="menu-item">
 
-                <img src="/EEMS-Platform/assets/images/parent/fee.png" class="menu-icon">
+                <img src="../assets/images/parent/fee.png" class="menu-icon">
                 <span class="menu-text">Pagesat</span>
 
             </a>
 
             <a href="parentMessages.php" class="menu-item">
 
-                <img src="/EEMS-Platform/assets/images/parent/chatting.png" class="menu-icon">
+                <img src="../assets/images/parent/chatting.png" class="menu-icon">
                 <span class="menu-text">Mesazhet</span>
 
             </a>
 
             <a href="parentNotifications.php" class="menu-item">
 
-                <img src="/EEMS-Platform/assets/images/parent/notification.png" class="menu-icon">
+                <img src="../assets/images/parent/notification.png" class="menu-icon">
                 <span class="menu-text">Njoftime</span>
 
             </a>
 
             <a href="parentStatistics.php" class="menu-item">
 
-                <img src="/EEMS-Platform/assets/images/parent/trend.png" class="menu-icon">
+                <img src="../assets/images/parent/trend.png" class="menu-icon">
                 <span class="menu-text">Statistika</span>
 
             </a>
 
             <a href="parentProfile.php" class="menu-item">
 
-                <img src="/EEMS-Platform/assets/images/parent/person.png" class="menu-icon">
+                <img src="../assets/images/parent/person.png" class="menu-icon">
                 <span class="menu-text">Profili</span>
 
             </a>
 
             <a href="../index.php" class="menu-item logout" onclick="sessionStorage.clear();">
 
-                <img src="/EEMS-Platform/assets/images/parent/logout.png" class="menu-icon">
+                <img src="../assets/images/parent/logout.png" class="menu-icon">
                 <span class="menu-text">Dil</span>
 
             </a>
@@ -328,7 +328,7 @@ $gradesResult = mysqli_query($connection, $gradesQuery);
 
         <div class="top-card">
 
-            <img src="/EEMS-Platform/assets/images/parent/certificateLejla.png">
+            <img src="../assets/images/parent/certificateLejla.png">
 
             <h1>
                 Notat e nxënësit në lëndë dhe tremujor të ndryshëm

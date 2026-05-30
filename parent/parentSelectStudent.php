@@ -186,25 +186,25 @@ if(!$result){
             <article class="student-card-wrapper">
 
                 <div class="avatar-container">
-                    <img src="/EEMS-Platform/assets/images/parent/icons8-person-96.png" class="avatar-image">
+                    <img src="../assets/images/parent/icons8-person-96.png" class="avatar-image">
                 </div>
 
                 <div class="student-card">
 
                     <div class="input-wrapper">
-                        <img src="/EEMS-Platform/assets/images/parent/icons8-person-64 (1).png" class="input-icon">
+                        <img src="../assets/images/parent/icons8-person-64 (1).png" class="input-icon">
                         <input type="text" class="student-input"
                             value="<?php echo $row['emerMbiemer']; ?>" readonly>
                     </div>
 
                     <div class="input-wrapper">
-                        <img src="/EEMS-Platform/assets/images/parent/icons8-person-64 (1).png" class="input-icon">
+                        <img src="../assets/images/parent/icons8-person-64 (1).png" class="input-icon">
                         <input type="text" class="student-input"
                             value="<?php echo $row['emriKlases']; ?>" readonly>
                     </div>
 
                     <div class="input-wrapper">
-                        <img src="/EEMS-Platform/assets/images/parent/icons8-person-64 (1).png" class="input-icon">
+                        <img src="../assets/images/parent/icons8-person-64 (1).png" class="input-icon">
                         <input type="text" class="student-input"
                             value="<?php echo $row['nrID']; ?>" readonly>
                     </div>
