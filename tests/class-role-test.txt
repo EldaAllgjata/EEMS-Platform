@@ -1,0 +1,35 @@
+# Test Sigurie – Kontrolli i Role-Based Access (Teacher Access)
+
+## Funksionaliteti
+
+Ky test kontrollon nëse përdoruesi me rol **teacher** ka akses të paautorizuar në faqen `classRegistration.php`.
+
+* Krijohet një session PHP me:
+
+  * `id = 1`
+  * `role = teacher`
+* Session-i dërgohet përmes cookie në një kërkesë HTTP me `cURL`.
+* Dërgohet kërkesa drejt:
+
+  * `classRegistration.php`
+* Nuk ndiqen automatikisht redirect-et (`FOLLOWLOCATION = false`).
+
+## Kontrolli
+
+* Verifikohet status code:
+
+  * `302` 
+* OSE kontrollohet përgjigja për:
+
+  * `index.php`
+
+## Rezultati
+
+* Nëse ndodh redirect ose bllokim → **PASS (akses i kontrolluar)**
+* Nëse faqja hapet → **FAIL (ROLE BYPASS i mundshëm)**
+
+## Verifikohet
+
+* Kontrolli i roleve 
+* Kufizimi i aksesit sipas rolit
+* Parandalimi i aksesit të teacher në faqe admin

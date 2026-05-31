@@ -1,0 +1,24 @@
+# Test Sigurie – Kontrolli i Redirect-it të Dashboard
+
+## Funksionaliteti
+
+Ky test kontrollon nëse faqja `adminDashboard.php` është e mbrojtur dhe nuk hapet pa login.
+
+* Dërgohet një kërkesë HTTP me `cURL` drejt dashboard-it pa session.
+* Nuk lejohet ndjekja automatike e redirect (`FOLLOWLOCATION = false`), që të kapet përgjigja reale.
+* Kontrollohet nëse serveri kthen:
+
+  * Header: `Location: ../index.php`
+    OSE
+  * Status code: `302`
+
+## Rezultati
+
+* Nëse ka redirect → **PASS (faqja është e mbrojtur)**
+* Nëse nuk ka redirect → **FAIL (dashboard është i ekspozuar)**
+
+## Verifikohet
+
+* Mbrojtja e faqes admin
+* Redirect automatik në login
+* Kontrolli i aksesit pa autentikim

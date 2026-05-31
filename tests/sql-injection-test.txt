@@ -1,0 +1,35 @@
+# Test Sigurie – SQL Injection në Login Admin
+
+## Funksionaliteti
+
+Ky test kontrollon nëse forma e login-it për **admin** është e mbrojtur nga SQL Injection.
+
+* Dërgohet një input i manipuluar në fushën email:
+
+  * `' OR '1'='1`
+* Password vendoset si vlerë testuese (`123`).
+* Ekzekutohet query në databazë për tabelën `admin`.
+* Kontrollohet rezultati i kthyer nga `mysqli_query`.
+
+---
+
+## Kontrolli
+
+* Verifikohet nëse query kthen rezultate:
+
+  * `mysqli_num_rows($result) > 0`
+
+---
+
+## Rezultati
+
+* Nëse kthehen të dhëna → **FAIL (SQL Injection i mundshëm)**
+* Nëse nuk kthehen të dhëna → **PASS (i mbrojtur nga SQL Injection)**
+
+---
+
+## Verifikohet
+
+* Siguria e query SQL
+* Mbrojtja e login-it admin
+* Parandalimi i bypass të autentikimit përmes input-eve të manipuluara
